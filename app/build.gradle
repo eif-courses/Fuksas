@@ -1,6 +1,8 @@
 plugins {
+    id 'kotlin-kapt'
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
+    alias(libs.plugins.hilt)
 }
 
 android {
@@ -19,7 +21,9 @@ android {
             useSupportLibrary true
         }
     }
-
+    kapt {
+        correctErrorTypes true
+    }
     buildTypes {
         release {
             minifyEnabled false
@@ -56,6 +60,30 @@ dependencies {
     implementation libs.ui.graphics
     implementation libs.ui.tooling.preview
     implementation libs.material3
+    implementation libs.navigation.compose
+
+    implementation(libs.javapoet)
+    implementation libs.retrofit
+    implementation libs.converter.moshi
+
+    implementation libs.room.runtime
+    kapt libs.room.compiler
+    implementation libs.room.ktx
+
+    kapt libs.daggerKapt
+    implementation libs.daggerHilt
+
+    kapt libs.hilt.compiler
+    implementation libs.hilt.navigation.compose
+
+    implementation libs.kotlinx.coroutines.core
+    implementation libs.kotlinx.coroutines.android
+    implementation libs.kotlinx.coroutines.play.services
+    implementation libs.lifecycle.viewmodel.ktx
+    implementation libs.lifecycle.viewmodel.compose
+
+    implementation libs.coil
+
     testImplementation libs.junit
     androidTestImplementation libs.androidx.test.ext.junit
     androidTestImplementation libs.espresso.core

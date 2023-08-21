@@ -1,7 +1,5 @@
-package eif.viko.lt.faculty.app
+package eif.viko.lt.faculty.app.presentation
 
-import android.graphics.ColorSpace
-import android.hardware.camera2.params.ColorSpaceProfiles
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -21,14 +19,16 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.graphics.painter.ColorPainter
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import eif.viko.lt.faculty.app.ui.theme.FuksasTheme
+import dagger.hilt.android.AndroidEntryPoint
+import eif.viko.lt.faculty.app.R
+import eif.viko.lt.faculty.app.presentation.ui.theme.FuksasTheme
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

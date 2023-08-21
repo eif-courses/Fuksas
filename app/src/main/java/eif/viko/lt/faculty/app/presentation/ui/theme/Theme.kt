@@ -1,4 +1,4 @@
-package eif.viko.lt.faculty.app.ui.theme
+package eif.viko.lt.faculty.app.presentation.ui.theme
 
 import android.app.Activity
 import android.os.Build
