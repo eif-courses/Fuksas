@@ -1,5 +1,5 @@
 [versions]
-agp = "8.2.0-alpha16"
+agp = "8.1.1"
 javapoet = "1.13.0"
 kotlin = "1.9.0"
 core-ktx = "1.10.1"
@@ -36,9 +36,9 @@ ui = { group = "androidx.compose.ui", name = "ui" }
 ui-graphics = { group = "androidx.compose.ui", name = "ui-graphics" }
 ui-tooling = { group = "androidx.compose.ui", name = "ui-tooling" }
 ui-tooling-preview = { group = "androidx.compose.ui", name = "ui-tooling-preview" }
-ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest" }
+ui-test-manifest = { group = "androidx.compose.ui", name = "ui-test-manifest", version = "1.5.0" }
 ui-test-junit4 = { group = "androidx.compose.ui", name = "ui-test-junit4" }
-material3 = { group = "androidx.compose.material3", name = "material3" }
+material3 = { group = "androidx.compose.material3", name = "material3", version = "1.1.1" }
 
 # Network call library
 retrofit =  {group="com.squareup.retrofit2", name="retrofit", version.ref="retrofit"}
@@ -58,7 +58,7 @@ navigation-compose = {group="androidx.navigation", name="navigation-compose", ve
 
 # https://coil-kt.github.io/coil/compose/
 # Display images from web
-coil = {group = "io.coil-kt", name="coil-compose", version.ref = "coil"}
+coil = {group = "io.coil-kt", name="coil-compose", version.ref = "coil" }
 
 # Coroutines and other stuff
 
