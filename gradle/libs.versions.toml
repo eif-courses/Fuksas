@@ -20,8 +20,10 @@ lifecycle-viewmodel-compose = "2.6.1"
 kotlinx-coroutines-core = "1.7.3"
 kotlinx-coroutines-android = "1.7.3"
 kotlinx-coroutines-play-services = "1.7.3"
+room-compiler = "2.5.2"
 
 [libraries]
+androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-compiler" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
 javapoet = { module = "com.squareup:javapoet", version.ref = "javapoet" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -44,7 +46,7 @@ converter-moshi =  {group="com.squareup.retrofit2", name="converter-moshi", vers
 
 # Local database mini ORM
 room-runtime = {group="androidx.room", name="room-runtime", version.ref="room"}
-room-compiler = {group="androidx.room", name="room-compiler", version.ref="room"}
+# room-compiler = {group="androidx.room", name="room-compiler", version.ref="room"}
 room-ktx = {group="androidx.room", name="room-ktx", version.ref="room"}
 
 # Dagger Hilt dependencies

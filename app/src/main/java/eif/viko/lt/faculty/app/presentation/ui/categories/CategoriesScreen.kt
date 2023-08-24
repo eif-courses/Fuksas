@@ -55,7 +55,7 @@ data class GridItem(
 )
 
 val courseList = listOf(
-    GridItem("Tvarkaraštis", Icons.Filled.Info, Route.CATEGORY_DETAILS_SCREEN),
+    GridItem("Tvarkaraštis", Icons.Filled.Info, Route.GROUP_SCREEN),
     GridItem("Biblioteka", Icons.Filled.Create,Route.CATEGORIES_SCREEN),
     GridItem("IT Paslaugos", Icons.Filled.Build,Route.CATEGORIES_SCREEN),
     GridItem("Kontaktai", Icons.Filled.AccountBox,Route.CATEGORIES_SCREEN),
@@ -86,8 +86,8 @@ fun Cards(navController: NavController) {
                     Toast.makeText(rememberedContext(), text, Toast.LENGTH_SHORT).show()
                     navController.navigate(courseList[it].route)
                           }, colors = CardDefaults.cardColors(
-                    contentColor = Color.Red,
-                    containerColor = Color.LightGray
+                    //contentColor = Color.Red,
+                    //containerColor = Color.LightGray
                 )
             ) {
                 Column(

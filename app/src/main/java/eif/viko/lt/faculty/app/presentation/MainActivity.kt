@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
@@ -56,10 +57,10 @@ class MainActivity : ComponentActivity() {
                         Icons.Default.Person
                     ),
                     MenuItem(
-                        Route.CATEGORY_DETAILS_SCREEN,
-                        "Category",
-                        "category",
-                        Icons.Default.Person
+                        Route.GROUP_SCREEN,
+                        "Groups",
+                        "groups",
+                        Icons.Default.List
                     )
                 )
                 val navController = rememberNavController()
@@ -124,10 +125,10 @@ fun GreetingPreview() {
                 Icons.Default.Person
             ),
             MenuItem(
-                Route.CATEGORY_DETAILS_SCREEN,
-                "Category",
-                "category",
-                Icons.Default.Person
+                Route.GROUP_SCREEN,
+                "Groups",
+                "groups",
+                Icons.Default.List
             )
         )
         val navController = rememberNavController()
