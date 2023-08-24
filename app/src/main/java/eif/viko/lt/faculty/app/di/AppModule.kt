@@ -1,19 +1,25 @@
 package eif.viko.lt.faculty.app.di
 
 import android.app.Application
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.room.Room
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import eif.viko.lt.faculty.app.data.local.GroupDatabase
+import eif.viko.lt.faculty.app.data.remote.AuthApi
 import eif.viko.lt.faculty.app.data.remote.TimetableApi
+import eif.viko.lt.faculty.app.data.repositories.AuthRepositoryImpl
 import eif.viko.lt.faculty.app.data.repositories.TimetableRepositoryImpl
+import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository
 import eif.viko.lt.faculty.app.domain.use_cases.GetGroupsUseCase
 import eif.viko.lt.faculty.app.domain.use_cases.TimetableUseCases
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -58,6 +64,30 @@ object AppModule {
         repository: TimetableRepository
     ): TimetableUseCases {
         return TimetableUseCases(getGroupsUseCase = GetGroupsUseCase(repository))
+    }
+
+
+
+    @Provides
+    @Singleton
+    fun provideAuthApi(): AuthApi {
+        return Retrofit.Builder()
+            .baseUrl("https://gemshop-production.up.railway.app/")
+            .addConverterFactory(MoshiConverterFactory.create())
+            .build()
+            .create()
+    }
+
+    @Provides
+    @Singleton
+    fun provideSharedPref(app: Application): SharedPreferences {
+        return app.getSharedPreferences("prefs", Context.MODE_PRIVATE)
+    }
+
+    @Provides
+    @Singleton
+    fun provideAuthRepository(api: AuthApi, prefs: SharedPreferences): AuthRepository {
+        return AuthRepositoryImpl(api, prefs)
     }
 
 

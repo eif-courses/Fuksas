@@ -11,6 +11,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material3.DrawerValue
@@ -61,6 +62,12 @@ class MainActivity : ComponentActivity() {
                         "Groups",
                         "groups",
                         Icons.Default.List
+                    ),
+                    MenuItem(
+                        Route.AUTH_SCREEN,
+                        "Auth",
+                        "auth",
+                        Icons.Default.ArrowForward
                     )
                 )
                 val navController = rememberNavController()

@@ -9,6 +9,7 @@ import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import eif.viko.lt.faculty.app.domain.util.Route
+import eif.viko.lt.faculty.app.presentation.ui.auth.AuthScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoriesScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoryDetailsScreen
 import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupDetailsScreen
@@ -34,6 +35,9 @@ fun MyAppNavHost(
         }
         composable(route=Route.GROUP_SCREEN){
             GroupsScreen(navController = navController)
+        }
+        composable(route=Route.AUTH_SCREEN){
+            AuthScreen(navController = navController)
         }
         composable(
             route = "${Route.GROUP_DETAILS_SCREEN}/{name}",
