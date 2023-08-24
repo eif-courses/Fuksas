@@ -1,9 +1,9 @@
 plugins {
-    id 'com.google.devtools.ksp'
-    id "kotlin-kapt"
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.kotlinAndroid)
-    alias(libs.plugins.hilt)
+    id "com.google.devtools.ksp"
+    id 'kotlin-kapt'
+    id 'com.google.dagger.hilt.android'
 }
 
 android {
@@ -25,8 +25,9 @@ android {
     ksp {
         arg("room.schemaLocation", "$projectDir/schemas")
     }
+    // Allow references to generated code
     kapt {
-        correctErrorTypes = true
+        correctErrorTypes true
     }
     buildTypes {
         release {
@@ -75,10 +76,16 @@ dependencies {
     implementation libs.room.ktx
 
 
+    //kapt libs.daggerKapt
+    //implementation libs.daggerHilt
+    //kapt libs.hilt.compiler
+//Dagger - Hilt
+    implementation "com.google.dagger:hilt-android:2.47"
+    kapt "com.google.dagger:hilt-compiler:2.47"
 
-    kapt libs.daggerKapt
-    implementation libs.daggerHilt
-    kapt libs.hilt.compiler
+    kapt "androidx.hilt:hilt-compiler:1.0.0"
+    implementation 'androidx.hilt:hilt-navigation-compose:1.0.0'
+
 
     implementation libs.hilt.navigation.compose
 

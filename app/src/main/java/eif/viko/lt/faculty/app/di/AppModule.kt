@@ -20,8 +20,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 object AppModule {
 
-    @Provides
+
     @Singleton
+    @Provides
     fun provideTimetableApi(): TimetableApi {
         return Retrofit.Builder()
             .baseUrl(TimetableApi.BASE_URL)
@@ -29,8 +30,9 @@ object AppModule {
             .build()
             .create(TimetableApi::class.java)
     }
-    @Provides
+
     @Singleton
+    @Provides
     fun provideTimetableRepository(
         api: TimetableApi,
         db: GroupDatabase
@@ -38,8 +40,9 @@ object AppModule {
         return TimetableRepositoryImpl(api, db.dao)
     }
 
-    @Provides
+
     @Singleton
+    @Provides
     fun provideGroupDatabase(app: Application): GroupDatabase {
         return Room.databaseBuilder(
             app,
@@ -48,8 +51,9 @@ object AppModule {
         ).build()
     }
 
-    @Provides
+
     @Singleton
+    @Provides
     fun provideTimetableUseCases(
         repository: TimetableRepository
     ): TimetableUseCases {

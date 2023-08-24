@@ -1,5 +1,5 @@
 package eif.viko.lt.faculty.app.domain.use_cases
 
-class TimetableUseCases(
+data class TimetableUseCases(
     val getGroupsUseCase: GetGroupsUseCase
 )

@@ -8,8 +8,10 @@ import eif.viko.lt.faculty.app.data.remote.TimetableApi
 import eif.viko.lt.faculty.app.domain.models.Group
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository
 import eif.viko.lt.faculty.app.domain.util.Resource
+import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.coroutines.flow.launchIn
 import java.io.IOException
 
 import javax.inject.Inject
