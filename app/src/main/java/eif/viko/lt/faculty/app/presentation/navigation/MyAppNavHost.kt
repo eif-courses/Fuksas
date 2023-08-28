@@ -12,6 +12,7 @@ import eif.viko.lt.faculty.app.domain.util.Route
 import eif.viko.lt.faculty.app.presentation.ui.auth.AuthScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoriesScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoryDetailsScreen
+import eif.viko.lt.faculty.app.presentation.ui.gems.GemsScreen
 import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupDetailsScreen
 import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupsScreen
 
@@ -20,7 +21,7 @@ import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupsScreen
 fun MyAppNavHost(
     modifier: Modifier = Modifier,
     navController: NavHostController = rememberNavController(),
-    startDestination: String = Route.CATEGORIES_SCREEN
+    startDestination: String = Route.AUTH_SCREEN
 ) {
     NavHost(
         modifier = modifier,
@@ -38,6 +39,9 @@ fun MyAppNavHost(
         }
         composable(route=Route.AUTH_SCREEN){
             AuthScreen(navController = navController)
+        }
+        composable(route=Route.GEMS_SCREEN){
+            GemsScreen(navController = navController)
         }
         composable(
             route = "${Route.GROUP_DETAILS_SCREEN}/{name}",

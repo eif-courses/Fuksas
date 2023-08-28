@@ -2,9 +2,13 @@ package eif.viko.lt.faculty.app.data.repositories
 
 import android.content.SharedPreferences
 import eif.viko.lt.faculty.app.data.remote.AuthApi
+import eif.viko.lt.faculty.app.data.remote.mappers.GemsDto
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
 import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.util.AuthResult
+import eif.viko.lt.faculty.app.domain.util.Resource
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import retrofit2.HttpException
 
 class AuthRepositoryImpl(
@@ -70,4 +74,12 @@ class AuthRepositoryImpl(
             AuthResult.UnknownError()
         }
     }
+    override fun myGems(): Flow<Resource<List<GemsDto>>> = flow {
+        val token = prefs.getString("jwt", null)
+        emit(Resource.Loading())
+        val remoteGroupsData = api.getMyGems("Bearer $token")
+        emit(Resource.Loading(data = remoteGroupsData))
+    }
+
+
 }

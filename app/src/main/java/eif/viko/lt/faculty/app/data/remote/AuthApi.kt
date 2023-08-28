@@ -1,5 +1,6 @@
 package eif.viko.lt.faculty.app.data.remote
 
+import eif.viko.lt.faculty.app.data.remote.mappers.GemsDto
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
 import eif.viko.lt.faculty.app.domain.models.TokenResponse
 import retrofit2.http.Body
@@ -23,4 +24,16 @@ interface AuthApi {
     suspend fun authenticate(
         @Header("Authorization") token: String
     )
+
+    @GET("gems/seller/me")
+    suspend fun getMyGems(
+        @Header("Authorization") token: String
+    ): List<GemsDto>
+
+
+
+
+    companion object{
+        const val BASE_URL = "https://gemshop-production.up.railway.app"
+    }
 }

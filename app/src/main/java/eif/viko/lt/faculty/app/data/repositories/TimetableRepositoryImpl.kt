@@ -30,21 +30,27 @@ class TimetableRepositoryImpl @Inject constructor(
 
         emit(Resource.Loading(data = groups))
 
-        try{
-            val remoteGroupsData = api.getGroups()
-            dao.insertGroupsToDB(remoteGroupsData.map { it.toGroupEntity()})
 
-        }catch (e: HttpException){
-            emit(Resource.Error(
-                "Something whent wrong!",
-                data = groups
-            ))
+        try {
+            //if (dao.getGroupsFromDB().isEmpty()) {
+                val remoteGroupsData = api.getGroups()
+                dao.insertGroupsToDB(remoteGroupsData.map { it.toGroupEntity() })
+           // }
+        } catch (e: HttpException) {
+            emit(
+                Resource.Error(
+                    "Something whent wrong!",
+                    data = groups
+                )
+            )
 
-        }catch (e: IOException){
-            emit(Resource.Error(
-                "Error can't reach server, check your internet connection!",
-                data = groups
-            ))
+        } catch (e: IOException) {
+            emit(
+                Resource.Error(
+                    "Error can't reach server, check your internet connection!",
+                    data = groups
+                )
+            )
         }
 
     }

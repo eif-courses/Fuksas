@@ -15,6 +15,8 @@ import eif.viko.lt.faculty.app.data.repositories.AuthRepositoryImpl
 import eif.viko.lt.faculty.app.data.repositories.TimetableRepositoryImpl
 import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository
+import eif.viko.lt.faculty.app.domain.use_cases.GemsUseCases
+import eif.viko.lt.faculty.app.domain.use_cases.GetGemsUseCase
 import eif.viko.lt.faculty.app.domain.use_cases.GetGroupsUseCase
 import eif.viko.lt.faculty.app.domain.use_cases.TimetableUseCases
 import retrofit2.Retrofit
@@ -53,7 +55,7 @@ object AppModule {
         return Room.databaseBuilder(
             app,
             GroupDatabase::class.java,
-            "timetable_db"
+            "db_timetable"
         ).build()
     }
 
@@ -72,7 +74,7 @@ object AppModule {
     @Singleton
     fun provideAuthApi(): AuthApi {
         return Retrofit.Builder()
-            .baseUrl("https://gemshop-production.up.railway.app/")
+            .baseUrl(AuthApi.BASE_URL)
             .addConverterFactory(MoshiConverterFactory.create())
             .build()
             .create()
@@ -88,6 +90,16 @@ object AppModule {
     @Singleton
     fun provideAuthRepository(api: AuthApi, prefs: SharedPreferences): AuthRepository {
         return AuthRepositoryImpl(api, prefs)
+    }
+
+
+
+    @Singleton
+    @Provides
+    fun provideGemUseCases(
+        repository: AuthRepository
+    ): GemsUseCases {
+        return GemsUseCases(getGemsUseCase = GetGemsUseCase(repository))
     }
 
 
