@@ -1,9 +1,9 @@
 package eif.viko.lt.faculty.app.data.remote
-
-import eif.viko.lt.faculty.app.data.remote.mappers.GemsDto
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
 import eif.viko.lt.faculty.app.domain.models.TokenResponse
 import retrofit2.http.Body
+import retrofit2.http.Field
+import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
 import retrofit2.http.POST
@@ -15,25 +15,33 @@ interface AuthApi {
         @Body request: AuthRequest
     )
 
+    @FormUrlEncoded
     @POST("login")
     suspend fun signIn(
-        @Body request: AuthRequest
+        @Field("grant_type") grantType: String,
+        @Field("username") username: String,
+        @Field("password") password: String
     ): TokenResponse
+
 
     @GET("users/me")
     suspend fun authenticate(
         @Header("Authorization") token: String
     )
 
-    @GET("gems/seller/me")
-    suspend fun getMyGems(
+    @GET("refresh_token")
+    suspend fun refreshToken(
         @Header("Authorization") token: String
-    ): List<GemsDto>
+    ): TokenResponse
 
 
+//    @GET("gems/seller/me")
+//    suspend fun getMyGems(
+//        @Header("Authorization") token: String
+//    ): List<GemsDto>
 
 
-    companion object{
-        const val BASE_URL = "https://gemshop-production.up.railway.app"
+    companion object {
+        const val BASE_URL = "https://onlinecourses-production.up.railway.app"
     }
 }

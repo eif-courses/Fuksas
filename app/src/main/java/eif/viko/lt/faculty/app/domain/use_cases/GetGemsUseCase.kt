@@ -9,7 +9,7 @@ import javax.inject.Inject
 class GetGemsUseCase @Inject constructor(
     private val repository: AuthRepository
 ) {
-    operator fun invoke(): Flow<Resource<List<GemsDto>>>{
-        return repository.myGems();
-    }
+//    operator fun invoke(): Flow<Resource<List<GemsDto>>>{
+//        return repository.myGems();
+//    }
 }

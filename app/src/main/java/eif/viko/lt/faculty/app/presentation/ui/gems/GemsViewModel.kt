@@ -20,34 +20,34 @@ class GemsViewModel @Inject constructor(
         private set
 
     init {
-        getGems()
+       // getGems()
     }
-    private fun getGems() {
-
-        getGemsUseCase.invoke().onEach { result ->
-            state = when (result) {
-                is Resource.Success -> {
-                    state.copy(
-                        gems = result.data ?: emptyList(),
-                       // groups = result.data ?: emptyList(),
-                        isLoading = false
-                    )
-                }
-                is Resource.Loading -> {
-                    state.copy(
-                        gems = result.data ?: emptyList(),
-                        isLoading = true
-                    )
-                }
-                is Resource.Error -> {
-                    state.copy(
-                        gems = result.data ?: emptyList(),
-                        isLoading = false,
-                        error = "Error loading data"
-                    )
-                }
-            }
-        }.launchIn(viewModelScope)
-
-    }
+//    private fun getGems() {
+//
+//        getGemsUseCase.invoke().onEach { result ->
+//            state = when (result) {
+//                is Resource.Success -> {
+//                    state.copy(
+//                        gems = result.data ?: emptyList(),
+//                       // groups = result.data ?: emptyList(),
+//                        isLoading = false
+//                    )
+//                }
+//                is Resource.Loading -> {
+//                    state.copy(
+//                        gems = result.data ?: emptyList(),
+//                        isLoading = true
+//                    )
+//                }
+//                is Resource.Error -> {
+//                    state.copy(
+//                        gems = result.data ?: emptyList(),
+//                        isLoading = false,
+//                        error = "Error loading data"
+//                    )
+//                }
+//            }
+//        }.launchIn(viewModelScope)
+//
+//    }
 }

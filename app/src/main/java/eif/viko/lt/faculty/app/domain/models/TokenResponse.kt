@@ -1,5 +1,6 @@
 package eif.viko.lt.faculty.app.domain.models
 
 data class TokenResponse(
-    val token: String
+    val access_token: String = "",
+    val token_type: String = ""
 )
