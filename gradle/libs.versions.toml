@@ -1,5 +1,9 @@
 [versions]
 agp = "8.1.1"
+androidx-hilt-compiler = "1.0.0"
+hilt-compiler = "2.48"
+hilt-android = "2.48"
+hilt-navigation-compose = "1.0.0"
 javapoet = "1.13.0"
 kotlin = "1.9.0"
 core-ktx = "1.10.1"
@@ -9,9 +13,9 @@ espresso-core = "3.5.1"
 lifecycle-runtime-ktx = "2.6.1"
 activity-compose = "1.7.2"
 compose-bom = "2023.08.00"
-hilt = "2.47"
+hilt = "2.48"
 room = "2.5.2"
-navigation-compose = "2.7.0"
+navigation-compose = "2.7.1"
 retrofit = "2.9.0"
 hilt-compose = "1.0.0"
 coil = "2.4.0"
@@ -23,8 +27,12 @@ kotlinx-coroutines-play-services = "1.7.3"
 room-compiler = "2.5.2"
 
 [libraries]
+androidx-hilt-navigation-compose = { module = "androidx.hilt:hilt-navigation-compose", version.ref = "hilt-navigation-compose" }
+androidx-hilt-compiler = { module = "androidx.hilt:hilt-compiler", version.ref = "androidx-hilt-compiler" }
 androidx-room-compiler = { module = "androidx.room:room-compiler", version.ref = "room-compiler" }
 core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "core-ktx" }
+hilt-compiler = { module = "com.google.dagger:hilt-compiler", version.ref = "hilt-compiler" }
+hilt-android = { module = "com.google.dagger:hilt-android", version.ref = "hilt-android" }
 javapoet = { module = "com.squareup:javapoet", version.ref = "javapoet" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }
 androidx-test-ext-junit = { group = "androidx.test.ext", name = "junit", version.ref = "androidx-test-ext-junit" }
@@ -50,9 +58,9 @@ room-runtime = {group="androidx.room", name="room-runtime", version.ref="room"}
 room-ktx = {group="androidx.room", name="room-ktx", version.ref="room"}
 
 # Dagger Hilt dependencies
-daggerHilt = {group = "com.google.dagger", name="hilt-android", version.ref = "hilt"}
-daggerKapt = {group = "com.google.dagger", name="hilt-compiler", version.ref = "hilt"}
-hilt-compiler = {group = "androidx.hilt", name="hilt-compiler", version.ref = "hilt-compose"}
+#daggerHilt = {group = "com.google.dagger", name="hilt-android", version.ref = "hilt"}
+#daggerKapt = {group = "com.google.dagger", name="hilt-compiler", version.ref = "hilt"}
+#hilt-compiler = {group = "androidx.hilt", name="hilt-compiler", version.ref = "hilt-compose"}
 hilt-navigation-compose = {group = "androidx.hilt", name="hilt-navigation-compose", version.ref = "hilt-compose"}
 navigation-compose = {group="androidx.navigation", name="navigation-compose", version.ref="navigation-compose"}
 

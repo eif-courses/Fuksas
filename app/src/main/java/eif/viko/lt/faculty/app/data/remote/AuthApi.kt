@@ -42,6 +42,6 @@ interface AuthApi {
 
 
     companion object {
-        const val BASE_URL = "https://onlinecourses-production.up.railway.app"
+        const val BASE_URL = "https://onlinecourses-production.up.railway.app/"
     }
 }
