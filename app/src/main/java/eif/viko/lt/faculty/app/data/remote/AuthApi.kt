@@ -1,11 +1,13 @@
 package eif.viko.lt.faculty.app.data.remote
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
+import eif.viko.lt.faculty.app.domain.models.RefreshToken
 import eif.viko.lt.faculty.app.domain.models.TokenResponse
 import retrofit2.http.Body
 import retrofit2.http.Field
 import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.Header
+import retrofit2.http.Headers
 import retrofit2.http.POST
 
 interface AuthApi {
@@ -29,10 +31,11 @@ interface AuthApi {
         @Header("Authorization") token: String
     )
 
-    @GET("refresh_token")
-    suspend fun refreshToken(
-        @Header("Authorization") token: String
-    ): TokenResponse
+
+    @POST("refresh")
+    @Headers("Content-Type: application/json")
+    suspend fun refreshToken(@Body token: RefreshToken): TokenResponse
+
 
 
 //    @GET("gems/seller/me")
