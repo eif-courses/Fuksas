@@ -14,6 +14,7 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
+import androidx.compose.material.icons.filled.ShoppingCart
 import androidx.compose.material3.DrawerValue
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.ModalDrawerSheet
@@ -56,6 +57,12 @@ class MainActivity : ComponentActivity() {
                         "Categories",
                         "categories",
                         Icons.Default.Person
+                    ),
+                    MenuItem(
+                        Route.PRODUCT_CATEGORIES_SCREEN,
+                        "Products",
+                        "products",
+                        Icons.Default.ShoppingCart
                     ),
                     MenuItem(
                         Route.GROUP_SCREEN,

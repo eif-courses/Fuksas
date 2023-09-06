@@ -7,10 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Face
 import androidx.compose.material3.Divider
-import androidx.compose.material3.Icon
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -19,20 +16,20 @@ import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import eif.viko.lt.faculty.app.R
-import eif.viko.lt.faculty.app.data.remote.mappers.GemsDto
+import eif.viko.lt.faculty.app.domain.models.Category
 
 @Composable
 fun GemListItem(
     modifier: Modifier = Modifier,
-    gems: List<GemsDto>,
+    categories: List<Category>,
     itemTextStyle: TextStyle = TextStyle(fontSize = 18.sp),
-    onItemClick: (GemsDto) -> Unit
+    onItemClick: (Category) -> Unit
 ) {
     LazyColumn(modifier) {
-        items(gems.size) { i ->
+        items(categories.size) { i ->
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .clickable { onItemClick(gems[i]) }
+                .clickable { onItemClick(categories[i]) }
                 .padding(16.dp)
             ) {
 
@@ -42,25 +39,24 @@ fun GemListItem(
 //                    contentDescription = item.Name,
 //                )
                 //Spacer(modifier = Modifier.width(16.dp))
-                if (gems[i].gem?.gem_type.equals("DIAMOND")) {
+                if (categories[i].id <= 1) {
                     Image(
                         painter = painterResource(id = R.drawable.diamond),
-                        contentDescription = "Kosmosas",modifier.width(50.dp)
+                        contentDescription = "Kosmosas", modifier.width(50.dp)
                     )
-                }else{
+                } else {
                     Image(
                         painter = painterResource(id = R.drawable.emerald),
-                        contentDescription = "Kosmosas",modifier.width(42.dp)
+                        contentDescription = "Kosmosas", modifier.width(42.dp)
                     )
                 }
 
-                gems[i].gem?.let {
-                    Text(
-                        text = it.gem_type,
-                        style = itemTextStyle,
-                        modifier = Modifier.weight(1f)
-                    )
-                }
+                Text(
+                    text = categories[i].name,
+                    style = itemTextStyle,
+                    modifier = Modifier.weight(1f)
+                )
+
             }
             Divider()
         }

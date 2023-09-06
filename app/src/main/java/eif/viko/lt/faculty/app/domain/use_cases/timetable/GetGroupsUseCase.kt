@@ -1,4 +1,4 @@
-package eif.viko.lt.faculty.app.domain.use_cases
+package eif.viko.lt.faculty.app.domain.use_cases.timetable
 
 import eif.viko.lt.faculty.app.domain.models.Group
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository

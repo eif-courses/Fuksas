@@ -13,21 +13,19 @@ import eif.viko.lt.faculty.app.data.remote.AuthApi
 import eif.viko.lt.faculty.app.data.remote.ShopApi
 import eif.viko.lt.faculty.app.data.remote.TimetableApi
 import eif.viko.lt.faculty.app.data.repositories.AuthRepositoryImpl
+import eif.viko.lt.faculty.app.data.repositories.ShopRepositoryImpl
 import eif.viko.lt.faculty.app.data.repositories.TimetableRepositoryImpl
 import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
+import eif.viko.lt.faculty.app.domain.repositories.ShopRepository
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository
-import eif.viko.lt.faculty.app.domain.use_cases.GemsUseCases
-import eif.viko.lt.faculty.app.domain.use_cases.GetGemsUseCase
-import eif.viko.lt.faculty.app.domain.use_cases.GetGroupsUseCase
-import eif.viko.lt.faculty.app.domain.use_cases.TimetableUseCases
+import eif.viko.lt.faculty.app.domain.use_cases.shop.GetCategoriesUseCase
+import eif.viko.lt.faculty.app.domain.use_cases.timetable.GetGroupsUseCase
+import eif.viko.lt.faculty.app.domain.use_cases.shop.ShopUseCases
+import eif.viko.lt.faculty.app.domain.use_cases.timetable.TimetableUseCases
 import eif.viko.lt.faculty.app.domain.util.OAuthInterceptor
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
-import retrofit2.Retrofit.Builder
 import retrofit2.converter.moshi.MoshiConverterFactory
-import retrofit2.converter.scalars.ScalarsConverterFactory
-import retrofit2.create
 import javax.inject.Singleton
 
 @Module
@@ -123,5 +121,23 @@ object AppModule {
     ): TimetableUseCases {
         return TimetableUseCases(getGroupsUseCase = GetGroupsUseCase(repository))
     }
+
+    // =============== SHOP OBJECTS ==============================================
+    @Provides
+    @Singleton
+    fun provideShopRepository(
+        api: ShopApi,
+    ): ShopRepository {
+        return ShopRepositoryImpl(api)
+    }
+
+    @Singleton
+    @Provides
+    fun provideShopUseCases(
+        repository: ShopRepository
+    ): ShopUseCases {
+        return ShopUseCases(getCategoriesUseCase = GetCategoriesUseCase(repository))
+    }
+
 
 }

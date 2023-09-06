@@ -31,7 +31,7 @@ fun AuthScreen(
         viewModel.authResults.collect { result ->
             when(result) {
                 is AuthResult.Authorized -> {
-                    navController.navigate(Route.GEMS_SCREEN)
+                    navController.navigate(Route.PRODUCT_CATEGORIES_SCREEN)
 //                    navigator.navigate(SecretScreenDestination) {
 //                        popUpTo(AuthScreenDestination.route) {
 //                            inclusive = true

@@ -2,19 +2,14 @@ package eif.viko.lt.faculty.app.data.repositories
 
 import android.content.SharedPreferences
 import eif.viko.lt.faculty.app.data.remote.AuthApi
-import eif.viko.lt.faculty.app.data.remote.ShopApi
-import eif.viko.lt.faculty.app.data.remote.mappers.GemsDto
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
 import eif.viko.lt.faculty.app.domain.models.RefreshToken
 import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.util.AuthResult
-import eif.viko.lt.faculty.app.domain.util.Resource
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
-import okhttp3.FormBody
 import retrofit2.HttpException
+import javax.inject.Inject
 
-class AuthRepositoryImpl(
+class AuthRepositoryImpl @Inject constructor(
     private val api: AuthApi,
     private val prefs: SharedPreferences,
 ) : AuthRepository {
