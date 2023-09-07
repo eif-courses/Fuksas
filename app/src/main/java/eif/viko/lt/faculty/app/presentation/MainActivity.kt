@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.ArrowForward
+import androidx.compose.material.icons.filled.Face
 import androidx.compose.material.icons.filled.List
 import androidx.compose.material.icons.filled.Person
 import androidx.compose.material.icons.filled.ShoppingCart
@@ -60,10 +61,18 @@ class MainActivity : ComponentActivity() {
                     ),
                     MenuItem(
                         Route.PRODUCT_CATEGORIES_SCREEN,
-                        "Products",
-                        "products",
+                        "Products_Categories",
+                        "products_categories",
                         Icons.Default.ShoppingCart
                     ),
+
+                    MenuItem(
+                        Route.PRODUCTS_SCREEN,
+                        "Products",
+                        "products",
+                        Icons.Default.Face
+                    ),
+
                     MenuItem(
                         Route.GROUP_SCREEN,
                         "Groups",

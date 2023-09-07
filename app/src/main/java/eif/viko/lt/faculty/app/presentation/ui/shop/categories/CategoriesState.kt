@@ -1,4 +1,4 @@
-package eif.viko.lt.faculty.app.presentation.ui.gems
+package eif.viko.lt.faculty.app.presentation.ui.shop.categories
 
 import eif.viko.lt.faculty.app.domain.models.Category
 

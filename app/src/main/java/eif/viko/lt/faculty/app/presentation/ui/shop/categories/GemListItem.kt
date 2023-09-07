@@ -1,4 +1,4 @@
-package eif.viko.lt.faculty.app.presentation.ui.gems.components
+package eif.viko.lt.faculty.app.presentation.ui.shop.categories
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable

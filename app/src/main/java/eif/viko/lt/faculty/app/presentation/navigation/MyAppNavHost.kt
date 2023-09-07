@@ -12,7 +12,9 @@ import eif.viko.lt.faculty.app.domain.util.Route
 import eif.viko.lt.faculty.app.presentation.ui.auth.AuthScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoriesScreen
 import eif.viko.lt.faculty.app.presentation.ui.categories.CategoryDetailsScreen
-import eif.viko.lt.faculty.app.presentation.ui.gems.ProductCategoriesScreen
+import eif.viko.lt.faculty.app.presentation.ui.shop.categories.ProductCategoriesScreen
+import eif.viko.lt.faculty.app.presentation.ui.shop.products.ProductDetailsScreen
+import eif.viko.lt.faculty.app.presentation.ui.shop.products.ProductsScreen
 import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupDetailsScreen
 import eif.viko.lt.faculty.app.presentation.ui.timetable.GroupsScreen
 
@@ -31,16 +33,40 @@ fun MyAppNavHost(
         composable(route = Route.CATEGORIES_SCREEN) {
             CategoriesScreen(navController = navController)
         }
+        composable(route = Route.PRODUCTS_SCREEN) {
+            ProductsScreen(navController = navController)
+        }
+
+        composable(
+            route = "${Route.PRODUCT_DETAILS_SCREEN}/{name}/{description}/{price}/{quantity}",
+            arguments = listOf(
+                navArgument("name") { type = NavType.StringType },
+                navArgument("description") { type = NavType.StringType },
+                navArgument("price") { type = NavType.FloatType },
+                navArgument("quantity") { type = NavType.IntType },
+
+                )
+        ) { backStackEntry ->
+            ProductDetailsScreen(
+                navController = navController,
+                name = backStackEntry.arguments?.getString("name"),
+                description = backStackEntry.arguments?.getString("description"),
+                price = backStackEntry.arguments?.getFloat("price"),
+                quantity = backStackEntry.arguments?.getInt("quantity")
+            )
+        }
+
+
         composable(route = Route.CATEGORY_DETAILS_SCREEN) {
             CategoryDetailsScreen(navController = navController)
         }
-        composable(route=Route.GROUP_SCREEN){
+        composable(route = Route.GROUP_SCREEN) {
             GroupsScreen(navController = navController)
         }
-        composable(route=Route.AUTH_SCREEN){
+        composable(route = Route.AUTH_SCREEN) {
             AuthScreen(navController = navController)
         }
-        composable(route=Route.PRODUCT_CATEGORIES_SCREEN){
+        composable(route = Route.PRODUCT_CATEGORIES_SCREEN) {
             ProductCategoriesScreen(navController = navController)
         }
         composable(

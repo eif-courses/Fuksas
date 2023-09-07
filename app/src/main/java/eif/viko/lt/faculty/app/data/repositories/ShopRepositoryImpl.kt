@@ -2,6 +2,7 @@ package eif.viko.lt.faculty.app.data.repositories
 
 import eif.viko.lt.faculty.app.data.remote.ShopApi
 import eif.viko.lt.faculty.app.data.remote.mappers.ProductPageDto
+import eif.viko.lt.faculty.app.data.remote.mappers.Products
 import eif.viko.lt.faculty.app.domain.models.Category
 import eif.viko.lt.faculty.app.domain.repositories.ShopRepository
 import eif.viko.lt.faculty.app.domain.util.Resource
@@ -49,4 +50,37 @@ class ShopRepositoryImpl @Inject constructor(
     ): Flow<Resource<List<ProductPageDto>>> = flow {
         // TODO("Not yet implemented")
     }
+
+    override fun getProductsByCategoryAndPageNumber(
+        categoryId: Int,
+        pageNumber: Int,
+        pageSize: Int
+    ): Flow<Resource<Products>> = flow {
+
+        emit(Resource.Loading())
+
+        val remoteData = shopApi.getProductsByCategory(categoryId, pageNumber, pageSize)
+
+        emit(Resource.Loading(data = remoteData))
+
+    }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

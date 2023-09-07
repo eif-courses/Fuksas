@@ -75,11 +75,11 @@ class AuthRepositoryImpl @Inject constructor(
         } catch (e: HttpException) {
             if (e.code() == 401) {
                 // Update with new token using expired token
-                val result = api.refreshToken(RefreshToken(prefs.getString("jwt", null).toString()))
-
-                prefs.edit()
-                    .putString("jwt", result.access_token)
-                    .apply()
+//                val result = api.refreshToken(RefreshToken(prefs.getString("jwt", null).toString()))
+//
+//                prefs.edit()
+//                    .putString("jwt", result.access_token)
+//                    .apply()
 
                 //api.refreshToken(token = "Bearer${prefs.getString("jwt", null).toString()}")
 

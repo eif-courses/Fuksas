@@ -19,6 +19,7 @@ import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.repositories.ShopRepository
 import eif.viko.lt.faculty.app.domain.repositories.TimetableRepository
 import eif.viko.lt.faculty.app.domain.use_cases.shop.GetCategoriesUseCase
+import eif.viko.lt.faculty.app.domain.use_cases.shop.GetProductsByCategoryUseCase
 import eif.viko.lt.faculty.app.domain.use_cases.timetable.GetGroupsUseCase
 import eif.viko.lt.faculty.app.domain.use_cases.shop.ShopUseCases
 import eif.viko.lt.faculty.app.domain.use_cases.timetable.TimetableUseCases
@@ -136,7 +137,10 @@ object AppModule {
     fun provideShopUseCases(
         repository: ShopRepository
     ): ShopUseCases {
-        return ShopUseCases(getCategoriesUseCase = GetCategoriesUseCase(repository))
+        return ShopUseCases(
+            getCategoriesUseCase = GetCategoriesUseCase(repository),
+            getProductsByCategoryUseCase = GetProductsByCategoryUseCase(repository)
+        )
     }
 
 
