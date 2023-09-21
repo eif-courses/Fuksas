@@ -5,6 +5,7 @@ import eif.viko.lt.faculty.app.data.remote.mappers.Products
 import eif.viko.lt.faculty.app.domain.models.Category
 import eif.viko.lt.faculty.app.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
+import retrofit2.Response
 
 interface ShopRepository {
     fun getAllCategories(): Flow<Resource<List<Category>>>

@@ -4,40 +4,33 @@ import eif.viko.lt.faculty.app.data.remote.ShopApi
 import eif.viko.lt.faculty.app.data.remote.mappers.ProductPageDto
 import eif.viko.lt.faculty.app.data.remote.mappers.Products
 import eif.viko.lt.faculty.app.domain.models.Category
+import eif.viko.lt.faculty.app.domain.models.CategoryName
 import eif.viko.lt.faculty.app.domain.repositories.ShopRepository
 import eif.viko.lt.faculty.app.domain.util.Resource
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import retrofit2.Response
 import javax.inject.Inject
 
 class ShopRepositoryImpl @Inject constructor(
     private val shopApi: ShopApi
-): ShopRepository {
+) : ShopRepository {
     override fun getAllCategories(): Flow<Resource<List<Category>>> = flow {
-
-        //    override fun myGems(): Flow<Resource<List<GemsDto>>> = flow {
-//        val token = prefs.getString("jwt", null)
-         emit(Resource.Loading())
-
+        emit(Resource.Loading())
         val remoteData = shopApi.getAllCategories()
-
         emit(Resource.Loading(data = remoteData))
-
-//        val remoteGroupsData = api.getMyGems("Bearer $token")
-//        emit(Resource.Loading(data = remoteGroupsData))
-//    }
-
     }
+
     override suspend fun createCategory(name: String) {
-        //TODO("Not yet implemented")
+        shopApi.createCategory(CategoryName(name))
     }
 
     override suspend fun getCategoryById(id: Int) {
-        //TODO("Not yet implemented")
+        shopApi.getCategoryById(id)
     }
 
     override suspend fun deleteCategoryById(id: Int) {
-        //TODO("Not yet implemented")
+        shopApi.deleteCategoryById(id)
     }
 
     override suspend fun createProduct() {

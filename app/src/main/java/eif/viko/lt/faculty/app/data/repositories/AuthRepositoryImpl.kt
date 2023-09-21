@@ -3,7 +3,6 @@ package eif.viko.lt.faculty.app.data.repositories
 import android.content.SharedPreferences
 import eif.viko.lt.faculty.app.data.remote.AuthApi
 import eif.viko.lt.faculty.app.domain.models.AuthRequest
-import eif.viko.lt.faculty.app.domain.models.RefreshToken
 import eif.viko.lt.faculty.app.domain.repositories.AuthRepository
 import eif.viko.lt.faculty.app.domain.util.AuthResult
 import retrofit2.HttpException
@@ -64,13 +63,6 @@ class AuthRepositoryImpl @Inject constructor(
         return try {
             val token = prefs.getString("jwt", null) ?: return AuthResult.Unauthorized()
             api.authenticate("Bearer $token")
-
-
-            // println(token)
-            // println(api.refreshToken(RefreshToken(token)))
-            // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJtYUBnbWFpbC5jb20iLCJleHAiOjE2OTQwMjk0NjJ9._l59RFQxfd1_1Hu87gDKlhbd0RqKMG89jqT8v6kT5kg
-
-
             AuthResult.Authorized()
         } catch (e: HttpException) {
             if (e.code() == 401) {
@@ -94,13 +86,6 @@ class AuthRepositoryImpl @Inject constructor(
             AuthResult.UnknownError()
         }
     }
-
-//    override fun myGems(): Flow<Resource<List<GemsDto>>> = flow {
-//        val token = prefs.getString("jwt", null)
-//        emit(Resource.Loading())
-//        val remoteGroupsData = api.getMyGems("Bearer $token")
-//        emit(Resource.Loading(data = remoteGroupsData))
-//    }
 
 
 }

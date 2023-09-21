@@ -1,6 +1,7 @@
 package eif.viko.lt.faculty.app.presentation.ui.shop.products
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.platform.LocalContext
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import eif.viko.lt.faculty.app.data.remote.mappers.Products
@@ -15,12 +16,23 @@ fun ProductsScreen(
 ) {
     val state = viewModel.state.products
 
+    val stateName = viewModel.state.name
+    val context = LocalContext.current
+
     state?.let {
         ProductCards(
             products = it.items, onItemClick = {product ->
-                navController.navigate(
-                    Route.PRODUCT_DETAILS_SCREEN +"/${product.name}/${product.description}/${product.price}/${product.quantity}"
-                )
+
+
+                // TODO make interaction with API delete
+                viewModel.state.id = product.category!!.id
+               // viewModel.state.name = "KOSMONAUTAI"
+               // viewModel.onEvent(ProductUiEvents.CreateNewCategory)
+                viewModel.onEvent(ProductUiEvents.DeleteCategoryById)
+
+//                navController.navigate(
+//                    Route.PRODUCT_DETAILS_SCREEN +"/${product.name}/${product.description}/${product.price}/${product.quantity}"
+//                )
             })
     }
     println("DUOMENYS IS API: $state")
